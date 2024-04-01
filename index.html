@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas{
+            border: 1px solid;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="myCanvas" width="700" height="700"></canvas>
+    <script>
+        const ctx = myCanvas.getContext('2d');
+
+        let radius = 50;
+
+        myCanvas.addEventListener('wheel', (e) => {
+            radius -= Math.sign(e.deltaY);
+        });
+
+        myCanvas.addEventListener('pointerdown', (e) => {
+            ctx.beginPath();
+            ctx.arc(e.offsetX, e.offsetY, radius, 0, 2*Math.PI);
+            ctx.fill();
+        });
+    </script>
+</body>
+</html>
